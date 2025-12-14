@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Landing Page | Nurin Syafiqah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset and Global Styles */
+        :root {
+            --color-background: #F7F7F9; /* Very soft light grey/off-white */
+            --color-card-background: #FFFFFF; /* Pure white for cards */
+            --color-text-primary: #1C1C1E; /* Near-black for main text */
+            --color-text-secondary: #6B7280; /* Medium grey for subtle text */
+            --color-accent: #004D99; /* Deep Ocean Blue (UMT Theme) */
+            --color-border: #E5E7EB; /* Light border grey */
+            --font-family-sans: 'Inter', sans-serif;
+            --border-radius-large: 16px;
+            --padding-base: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-sans);
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px var(--padding-base);
+        }
+
+        /* Bento Grid Container */
+        .bento-grid-container {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(150px, auto);
+            gap: 20px;
+        }
+
+        /* Card Base Styles */
+        .bento-card {
+            background-color: var(--color-card-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-large);
+            padding: var(--padding-base);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Card Content Styles */
+        .card-header {
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .card-content-text {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Specific Card Styling */
+        .profile-tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--color-accent);
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            margin-top: auto;
+            display: flex;
+            gap: 15px;
+            padding-top: 10px;
+        }
+
+        .social-links a {
+            color: var(--color-text-primary);
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Grid Sizing */
+        .card-1 { grid-column: span 2; grid-row: span 2; }
+        .card-2 { grid-column: span 1; }
+        .card-3 { grid-column: span 1; }
+        .card-4 { grid-column: span 2; }
+        .card-5 { grid-column: span 1; }
+        .card-6 { grid-column: 1 / -1; min-height: 80px; justify-content: center; align-items: center; }
+
+        /* Subjects List Style */
+        .subjects-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .subjects-list li {
+            font-size: 1rem;
+            padding: 4px 0;
+            color: var(--color-text-primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .subjects-list li::before {
+            content: '•';
+            color: var(--color-accent);
+            font-weight: 900;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .bento-grid-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .bento-card {
+                grid-column: 1 / -1 !important;
+                grid-row: auto !important;
+            }
+
+            .card-1 { min-height: 200px; }
+            .card-6 { min-height: 100px; }
+            body { padding: 20px 15px; }
+            
+            .profile-tagline { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bento-grid-container">
+
+        <div class="bento-card card-1">
+            <div class="card-header">Student Profile</div>
+            <h1 class="card-title" style="font-size: 2rem; font-weight: 800;">NURIN SYAFIQAH BINTI AZHAR</h1>
+            <p class="profile-tagline">'Innovating food safety.' 💡</p>
+            <p class="card-subtitle">
+                Food Science and Technology
+                <br>
+                **Year 1** Student (2025)
+            </p>
+            <p class="card-content-text">
+                Currently building a foundation in quality control and analytical food techniques. Excited to apply lab skills to industry problems.
+            </p>
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">UMT Portal</a>
+            </div>
+        </div>
+
+        <div class="bento-card card-2">
+            <div class="card-header">Current Location</div>
+            <p class="card-title">UMT, Kuala Nerus</p>
+            <p class="card-content-text">
+                Universiti Malaysia Terengganu
+                <br>
+                **2:06 PM** (Local Time)
+            </p>
+        </div>
+
+        <div class="bento-card card-3">
+            <div class="card-header">Core Skills & Modules</div>
+            <p class="card-title">Foundational Food Science</p>
+            <ul class="subjects-list">
+                <li>Food Chemistry</li>
+                <li>Food Microbiology</li>
+                <li>Data Analysis (Excel)</li>
+                <li>Practical Lab Analysis</li>
+            </ul>
+        </div>
+
+        <div class="bento-card card-4">
+            <div class="card-header">Lab Experiment</div>
+            <p class="card-title">**Starch Gelatinization in Local Kuih**</p>
+            <p class="card-content-text">
+                Analyzing and documenting the physical and textural profiles of traditional Malaysian delicacies, focusing on **Kuih Lapis** starch properties.
+            </p>
+        </div>
+        
+        <div class="bento-card card-5">
+            <div class="card-header">Campus Activity</div>
+            <p class="card-title">Relaxation Protocol</p>
+            <p class="card-content-text">
+                My most dedicated hobby: **Sleeping** 😴. Essential for maintaining high energy and focus during lab sessions!
+            </p>
+        </div>
+
+        <div class="bento-card card-6" style="flex-direction: row; justify-content: space-between; align-items: center;">
+            <span class="card-header" style="margin-bottom: 0;">Study Music</span>
+            <span class="card-content-text" style="font-size: 1.1rem; font-weight: 600;">▶︎ Ocean Waves & Focus Music</span>
+            <span class="card-content-text">Playback Active</span>
+        </div>
+
+    </div>
+
+</body>
+</html>
