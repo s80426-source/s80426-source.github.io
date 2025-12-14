@@ -8,12 +8,12 @@
     <style>
         /* CSS Reset and Global Styles */
         :root {
-            --color-background: #F7F7F9; /* Very soft light grey/off-white */
-            --color-card-background: #FFFFFF; /* Pure white for cards */
-            --color-text-primary: #1C1C1E; /* Near-black for main text */
-            --color-text-secondary: #6B7280; /* Medium grey for subtle text */
+            --color-background: #F7F7F9;
+            --color-card-background: #FFFFFF;
+            --color-text-primary: #1C1C1E;
+            --color-text-secondary: #6B7280;
             --color-accent: #004D99; /* Deep Ocean Blue (UMT Theme) */
-            --color-border: #E5E7EB; /* Light border grey */
+            --color-border: #E5E7EB;
             --font-family-sans: 'Inter', sans-serif;
             --border-radius-large: 16px;
             --padding-base: 20px;
@@ -61,8 +61,9 @@
         }
 
         .bento-card:hover {
-            transform: translateY(-2px);
+            transform: scale(1.01);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            z-index: 10;
         }
 
         /* Card Content Styles */
@@ -73,6 +74,12 @@
             letter-spacing: 0.05em;
             margin-bottom: 10px;
             font-weight: 600;
+        }
+        
+        /* --- START CARD 1 TEXT OVERRIDES (Ensuring White Text) --- */
+        .card-1 .card-header {
+            color: white; /* Header is white */
+            opacity: 0.8;
         }
 
         .card-title {
@@ -86,18 +93,26 @@
             color: var(--color-text-secondary);
             margin-bottom: 15px;
         }
+        /* Override subtitle color for the Profile Card against dark background */
+        .card-1 .card-subtitle {
+            color: rgba(255, 255, 255, 0.7); /* Light white/grey */
+        }
 
         .card-content-text {
             color: var(--color-text-secondary);
             font-size: 0.95rem;
         }
-        
+        /* Override content color for the Profile Card against dark background */
+        .card-1 .card-content-text {
+            color: rgba(255, 255, 255, 0.8); /* Light white/grey */
+        }
+
         /* Specific Card Styling */
         .profile-tagline {
             font-size: 1.2rem;
             font-style: italic;
             font-weight: 500;
-            color: var(--color-accent);
+            color: #E6F0FF; /* Very light blue for contrast */
             margin-top: 10px;
             margin-bottom: 20px;
         }
@@ -116,18 +131,58 @@
             font-size: 0.9rem;
             transition: color 0.2s ease;
         }
+        /* Override social link color for the Profile Card */
+        .card-1 .social-links a {
+            color: white; /* Links are white */
+        }
+        .card-1 .social-links a:hover {
+            color: #A0C0FF;
+        }
+        /* --- END CARD 1 TEXT OVERRIDES --- */
 
-        .social-links a:hover {
-            color: var(--color-accent);
+
+        /* Grid Sizing (Updated to include Card 7) */
+        .card-1 { 
+            grid-column: span 2; 
+            grid-row: span 2; 
+            
+            /* Background Image and Text Color */
+            background-color: transparent; 
+            background-image: url('bg.jpg'); 
+            background-size: cover;          
+            background-position: center;     
+            position: relative;
+            
+            /* --- KEY CHANGE: Set base text color to white for the profile card --- */
+            color: white; 
+        }
+        
+        /* Add a subtle overlay for better text readability */
+        .card-1::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45); 
+            border-radius: var(--border-radius-large);
+            z-index: 0; 
+        }
+        
+        /* Ensure all direct content children (text) have a higher z-index */
+        .card-1 > * {
+            position: relative;
+            z-index: 2;
         }
 
-        /* Grid Sizing */
-        .card-1 { grid-column: span 2; grid-row: span 2; }
-        .card-2 { grid-column: span 1; }
-        .card-3 { grid-column: span 1; }
-        .card-4 { grid-column: span 2; }
-        .card-5 { grid-column: span 1; }
+        .card-2 { grid-column: span 1; grid-row: span 1; }
+        .card-3 { grid-column: span 1; grid-row: span 1; }
+        .card-4 { grid-column: span 2; grid-row: span 1; }
+        .card-5 { grid-column: span 1; grid-row: span 1; }
+        .card-7 { grid-column: span 1; grid-row: span 1; }
         .card-6 { grid-column: 1 / -1; min-height: 80px; justify-content: center; align-items: center; }
+
 
         /* Subjects List Style */
         .subjects-list {
@@ -189,9 +244,9 @@
                 Currently building a foundation in quality control and analytical food techniques. Excited to apply lab skills to industry problems.
             </p>
             <div class="social-links">
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
-                <a href="#">UMT Portal</a>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">GitHub</a>
+                <a href="#" target="_blank">UMT Portal</a>
             </div>
         </div>
 
@@ -201,7 +256,7 @@
             <p class="card-content-text">
                 Universiti Malaysia Terengganu
                 <br>
-                **2:06 PM** (Local Time)
+                **3:24 PM** (Local Time)
             </p>
         </div>
 
@@ -229,6 +284,14 @@
             <p class="card-title">Relaxation Protocol</p>
             <p class="card-content-text">
                 My most dedicated hobby: **Sleeping** 😴. Essential for maintaining high energy and focus during lab sessions!
+            </p>
+        </div>
+
+        <div class="bento-card card-7">
+            <div class="card-header">Reflection</div>
+            <p class="card-title">Why Food Tech Matters in Malaysia</p>
+            <p class="card-content-text">
+                Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition.
             </p>
         </div>
 
