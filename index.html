@@ -76,9 +76,8 @@
             font-weight: 600;
         }
         
-        /* --- START CARD 1 TEXT OVERRIDES (Ensuring White Text) --- */
         .card-1 .card-header {
-            color: white; /* Header is white */
+            color: white; 
             opacity: 0.8;
         }
 
@@ -93,18 +92,18 @@
             color: var(--color-text-secondary);
             margin-bottom: 15px;
         }
-        /* Override subtitle color for the Profile Card against dark background */
+
         .card-1 .card-subtitle {
-            color: rgba(255, 255, 255, 0.7); /* Light white/grey */
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .card-content-text {
             color: var(--color-text-secondary);
             font-size: 0.95rem;
         }
-        /* Override content color for the Profile Card against dark background */
+
         .card-1 .card-content-text {
-            color: rgba(255, 255, 255, 0.8); /* Light white/grey */
+            color: rgba(255, 255, 255, 0.8);
         }
 
         /* Specific Card Styling */
@@ -112,7 +111,7 @@
             font-size: 1.2rem;
             font-style: italic;
             font-weight: 500;
-            color: #E6F0FF; /* Very light blue for contrast */
+            color: #E6F0FF;
             margin-top: 10px;
             margin-bottom: 20px;
         }
@@ -131,33 +130,26 @@
             font-size: 0.9rem;
             transition: color 0.2s ease;
         }
-        /* Override social link color for the Profile Card */
+
         .card-1 .social-links a {
-            color: white; /* Links are white */
+            color: white;
         }
         .card-1 .social-links a:hover {
             color: #A0C0FF;
         }
-        /* --- END CARD 1 TEXT OVERRIDES --- */
 
-
-        /* Grid Sizing (Updated to include Card 7) */
+        /* Grid Sizing */
         .card-1 { 
             grid-column: span 2; 
             grid-row: span 2; 
-            
-            /* Background Image and Text Color */
             background-color: transparent; 
             background-image: url('bg.jpg'); 
             background-size: cover;          
             background-position: center;     
             position: relative;
-            
-            /* --- KEY CHANGE: Set base text color to white for the profile card --- */
             color: white; 
         }
         
-        /* Add a subtle overlay for better text readability */
         .card-1::before {
             content: "";
             position: absolute;
@@ -170,7 +162,6 @@
             z-index: 0; 
         }
         
-        /* Ensure all direct content children (text) have a higher z-index */
         .card-1 > * {
             position: relative;
             z-index: 2;
@@ -178,11 +169,54 @@
 
         .card-2 { grid-column: span 1; grid-row: span 1; }
         .card-3 { grid-column: span 1; grid-row: span 1; }
-        .card-4 { grid-column: span 2; grid-row: span 1; }
+        
+        /* Card 4 Split Layout for the App Link */
+        .card-4 { 
+            grid-column: span 2; 
+            grid-row: span 1; 
+        }
+
+        .card-4-inner {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
+            height: 100%;
+        }
+
+        .card-4-content {
+            flex: 1;
+        }
+
+        /* Try My Lab Timer App Button Styling */
+        .app-link-container {
+            flex-shrink: 0;
+        }
+
+        .app-btn {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: #FFFFFF;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 77, 153, 0.1);
+            border: 2px solid var(--color-accent);
+        }
+
+        .app-btn:hover {
+            background-color: #FFFFFF;
+            color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 77, 153, 0.15);
+        }
+
         .card-5 { grid-column: span 1; grid-row: span 1; }
         .card-7 { grid-column: span 1; grid-row: span 1; }
         .card-6 { grid-column: 1 / -1; min-height: 80px; justify-content: center; align-items: center; }
-
 
         /* Subjects List Style */
         .subjects-list {
@@ -219,11 +253,19 @@
                 grid-row: auto !important;
             }
 
+            .card-4-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .app-btn {
+                width: 100%;
+                text-align: center;
+            }
+
             .card-1 { min-height: 200px; }
             .card-6 { min-height: 100px; }
             body { padding: 20px 15px; }
-            
-            .profile-tagline { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -273,10 +315,17 @@
 
         <div class="bento-card card-4">
             <div class="card-header">Lab Experiment</div>
-            <p class="card-title">**Starch Gelatinization in Local Kuih**</p>
-            <p class="card-content-text">
-                Analyzing and documenting the physical and textural profiles of traditional Malaysian delicacies, focusing on **Kuih Lapis** starch properties.
-            </p>
+            <div class="card-4-inner">
+                <div class="card-4-content">
+                    <p class="card-title">**Starch Gelatinization in Local Kuih**</p>
+                    <p class="card-content-text">
+                        Analyzing and documenting the physical and textural profiles of traditional Malaysian delicacies.
+                    </p>
+                </div>
+                <div class="app-link-container">
+                    <a href="https://s80426-source.github.io/lab-timer-app/" target="_blank" class="app-btn">Try My Lab Timer App</a>
+                </div>
+            </div>
         </div>
         
         <div class="bento-card card-5">
